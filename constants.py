@@ -30,12 +30,24 @@ SIM_TASK_CONFIGS = {
         'episode_len': 500,
         'camera_names': ['top']
     },
+
+    'spot_mobile_manipulation': {
+        'dataset_dir': DATA_DIR + '/spot_mobile_manipulation',
+        'num_episodes': 50,
+        'episode_len': 400,
+        'camera_names': ['hand_rgb', 'head_rgb'],  # hand: close-up, head: scene reference
+        'state_dim': 9,  # 6 arm joints + 3 base velocities
+    },
 }
 
 ### Simulation envs fixed constants
 DT = 0.02
 JOINT_NAMES = ["waist", "shoulder", "elbow", "forearm_roll", "wrist_angle", "wrist_rotate"]
 START_ARM_POSE = [0, -0.96, 1.16, 0, -0.3, 0, 0.02239, -0.02239,  0, -0.96, 1.16, 0, -0.3, 0, 0.02239, -0.02239]
+
+### Spot robot constants (9 DOF: 6 arm joints + 3 base velocities)
+SPOT_JOINT_NAMES = ["arm_sh0", "arm_sh1", "arm_el0", "arm_el1", "arm_wr0", "arm_wr1"]
+SPOT_BASE_VELOCITY_NAMES = ["velocity_x", "velocity_y", "angular_velocity"]
 
 XML_DIR = str(pathlib.Path(__file__).parent.resolve()) + '/assets/' # note: absolute path
 
